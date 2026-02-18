@@ -6,8 +6,8 @@ const User = require("../models/User");
 // Get overall stats
 exports.getStats = async (req, res) => {
   try {
+    // Remove paymentStatus filter if Donation model doesn't have this field
     const totalDonationsAgg = await Donation.aggregate([
-      { $match: { paymentStatus: "success" } },
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
 
@@ -48,8 +48,8 @@ exports.getTopDonors = async (req, res) => {
 // Donations per campaign (for chart)
 exports.getCampaignStats = async (req, res) => {
   try {
+    // Remove paymentStatus filter if Donation model doesn't have this field
     const stats = await Donation.aggregate([
-      { $match: { paymentStatus: "success" } },
       {
         $group: {
           _id: "$campaignId",

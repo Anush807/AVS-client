@@ -5,6 +5,8 @@ const {
   assignTask,
   submitReport,
   approveTask,
+  getMyTasks,
+  getAllTasks,
 } = require("../controllers/volunteerController");
 
 // Admin assigns
@@ -26,6 +28,20 @@ router.post(
   "/approve",
   authMiddleware(["admin"]),
   approveTask
+);
+
+// NEW: Volunteer gets own tasks
+router.get(
+  "/my-tasks",
+  authMiddleware(["volunteer"]),
+  getMyTasks
+);
+
+// NEW: Admin gets all tasks
+router.get(
+  "/tasks",
+  authMiddleware(["admin"]),
+  getAllTasks
 );
 
 module.exports = router;

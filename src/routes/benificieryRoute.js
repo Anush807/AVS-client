@@ -5,6 +5,8 @@ const {
   submitRequest,
   getPendingRequests,
   reviewRequest,
+  getMyRequests,
+  getAllRequests,
 } = require("../controllers/benificieryController");
 
 // Beneficiary submits
@@ -26,6 +28,20 @@ router.post(
   "/review",
   authMiddleware(["admin"]),
   reviewRequest
+);
+
+// NEW: Beneficiary gets own requests
+router.get(
+  "/my-requests",
+  authMiddleware(["beneficiary"]),
+  getMyRequests
+);
+
+// NEW: Admin gets all requests (pending + approved + rejected)
+router.get(
+  "/all",
+  authMiddleware(["admin"]),
+  getAllRequests
 );
 
 module.exports = router;

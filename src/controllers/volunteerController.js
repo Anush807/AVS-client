@@ -72,3 +72,32 @@ exports.approveTask = async (req, res) => {
     res.status(500).json({ message: "Approval failed" });
   }
 };
+
+// NEW: Volunteer gets their own tasks
+exports.getMyTasks = async (req, res) => {
+  try {
+    const tasks = await VolunteerTask.find({ 
+      volunteerId: req.user.userId 
+    })
+      .populate("assignedBy", "name")
+      .sort({ createdAt: -1 });
+
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch tasks" });
+  }
+};
+
+// NEW: Admin gets all volunteer tasks
+exports.getAllTasks = async (req, res) => {
+  try {
+    const tasks = await VolunteerTask.find()
+      .populate("volunteerId", "name email")
+      .populate("assignedBy", "name")
+      .sort({ createdAt: -1 });
+
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch tasks" });
+  }
+};

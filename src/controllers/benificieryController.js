@@ -61,3 +61,34 @@ exports.reviewRequest = async (req, res) => {
     res.status(500).json({ message: "Failed to review request" });
   }
 };
+
+// NEW: Beneficiary gets their own requests
+exports.getMyRequests = async (req, res) => {
+  try {
+    const requests = await BeneficiaryRequest.find({ 
+      beneficiaryId: req.user.userId 
+    })
+      .populate("campaignId", "title category")
+      .populate("reviewedBy", "name")
+      .sort({ createdAt: -1 });
+
+    res.json(requests);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch requests" });
+  }
+};
+
+// NEW: Admin gets all beneficiary requests (not just pending)
+exports.getAllRequests = async (req, res) => {
+  try {
+    const requests = await BeneficiaryRequest.find()
+      .populate("beneficiaryId", "name email")
+      .populate("campaignId", "title category")
+      .populate("reviewedBy", "name")
+      .sort({ createdAt: -1 });
+
+    res.json(requests);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch requests" });
+  }
+};
