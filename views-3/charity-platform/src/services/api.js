@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Replace this with your actual backend URL
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://charity-platform-backend-px77.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
