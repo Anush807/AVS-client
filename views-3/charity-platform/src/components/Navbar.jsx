@@ -38,7 +38,7 @@ const Navbar = () => {
             <div className="bg-gradient-to-br from-primary-500 to-primary-600 p-2 rounded-lg group-hover:scale-110 transition-transform duration-200">
               <Heart className="h-6 w-6 text-white" fill="currentColor" />
             </div>
-            <span className="text-xl font-bold text-neutral-900">CharityHub</span>
+            <span className="text-xl font-bold text-neutral-900">Helping Hands</span>
           </Link>
 
           {/* Desktop Navigation */}

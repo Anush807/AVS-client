@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Replace this with your actual backend URL
-const API_BASE_URL = 'https://charity-platform-backend-px77.onrender.com/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -42,6 +42,9 @@ export default api;
 // Auth APIs
 export const authAPI = {
   login: (credentials) => api.post('/auth/login', credentials),
+  registerDonor: (userData) => api.post('/auth/register/donor', userData),
+  registerBeneficiary: (userData) => api.post('/auth/register/beneficiary', userData),
+  registerVolunteer: (userData) => api.post('/auth/register/volunteer', userData),
 };
 
 // User APIs (Admin only)

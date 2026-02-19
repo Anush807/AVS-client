@@ -72,10 +72,16 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                to="/login"
+                to="/register"
                 className="btn-primary bg-white text-primary-600 hover:bg-primary-50 px-8 py-4 text-lg"
               >
                 Get Started
+              </Link>
+              <Link
+                to="/login"
+                className="px-8 py-4 text-lg font-medium text-white border-2 border-white hover:bg-white hover:text-primary-600 rounded-lg transition-all duration-200"
+              >
+                Sign In
               </Link>
               <a
                 href="#features"
@@ -119,7 +125,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-              Why Choose CharityHub?
+              Why Choose Helping Hands?
             </h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
               Experience a modern approach to charitable giving with gamification, transparency, and real impact.
@@ -170,10 +176,10 @@ const Home = () => {
               <div className="bg-gradient-to-br from-primary-500 to-primary-600 p-2 rounded-lg">
                 <Heart className="h-5 w-5 text-white" fill="currentColor" />
               </div>
-              <span className="text-white font-semibold">CharityHub</span>
+              <span className="text-white font-semibold">Helping Hands</span>
             </div>
             <p className="text-sm">
-              © 2026 CharityHub. Making a difference together.
+              © 2026 Helping Hands. Making a difference together.
             </p>
           </div>
         </div>

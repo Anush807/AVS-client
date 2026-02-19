@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 // Pages
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import AdminDashboard from './pages/AdminDashboard';
 import DonorDashboard from './pages/DonorDashboard';
 import BeneficiaryDashboard from './pages/BeneficiaryDashboard';
@@ -21,6 +22,7 @@ function App() {
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
             {/* Protected Routes - Admin */}
             <Route
