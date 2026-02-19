@@ -9,6 +9,7 @@ const Home = () => {
       description: 'Donate to causes you care about and track your contributions in real-time',
       color: 'text-red-500',
       bgColor: 'bg-red-50',
+      link: '/register',
     },
     {
       icon: Award,
@@ -16,6 +17,7 @@ const Home = () => {
       description: 'Gain points, unlock badges, and climb the leaderboard as you contribute',
       color: 'text-yellow-500',
       bgColor: 'bg-yellow-50',
+      link: '/register',
     },
     {
       icon: Target,
@@ -23,6 +25,7 @@ const Home = () => {
       description: 'Support targeted campaigns for education, healthcare, and disaster relief',
       color: 'text-blue-500',
       bgColor: 'bg-blue-50',
+      link: '/campaigns',
     },
     {
       icon: Users,
@@ -30,6 +33,7 @@ const Home = () => {
       description: 'Join volunteers and beneficiaries in a transparent charitable ecosystem',
       color: 'text-green-500',
       bgColor: 'bg-green-50',
+      link: '/community',
     },
     {
       icon: TrendingUp,
@@ -37,6 +41,7 @@ const Home = () => {
       description: 'Monitor fund utilization with detailed analytics and reports',
       color: 'text-purple-500',
       bgColor: 'bg-purple-50',
+      link: '/tracking',
     },
     {
       icon: Shield,
@@ -44,6 +49,7 @@ const Home = () => {
       description: 'All transactions are secure with complete transparency and receipts',
       color: 'text-indigo-500',
       bgColor: 'bg-indigo-50',
+      link: '/register',
     },
   ];
 
@@ -134,17 +140,22 @@ const Home = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div
+              <Link
                 key={index}
-                className="card hover:shadow-xl transition-all duration-300 group animate-slide-up"
+                to={feature.link}
+                className="card hover:shadow-xl transition-all duration-300 group animate-slide-up cursor-pointer"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className={`${feature.bgColor} w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <feature.icon className={`h-7 w-7 ${feature.color}`} />
                 </div>
-                <h3 className="text-xl font-semibold text-neutral-900 mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-semibold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors">{feature.title}</h3>
                 <p className="text-neutral-600">{feature.description}</p>
-              </div>
+                <div className="mt-4 text-primary-600 font-medium flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span>Learn more</span>
+                  <span>→</span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -7,6 +7,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Tracking from './pages/Tracking';
+import Campaigns from './pages/Campaigns';
+import Community from './pages/Community';
 import AdminDashboard from './pages/AdminDashboard';
 import DonorDashboard from './pages/DonorDashboard';
 import BeneficiaryDashboard from './pages/BeneficiaryDashboard';
@@ -23,6 +26,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/tracking" element={<Tracking />} />
+            <Route path="/campaigns" element={<Campaigns />} />
+            <Route path="/community" element={<Community />} />
 
             {/* Protected Routes - Admin */}
             <Route
