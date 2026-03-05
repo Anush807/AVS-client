@@ -32,10 +32,18 @@ export const AuthProvider = ({ children }) => {
     navigate('/login');
   };
 
+  const refreshUser = () => {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  };
+
   const value = {
     user,
     login,
     logout,
+    refreshUser,
     loading,
     isAuthenticated: !!user,
     isAdmin: user?.role === 'admin',

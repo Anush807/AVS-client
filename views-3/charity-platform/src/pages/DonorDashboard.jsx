@@ -7,7 +7,7 @@ import Loading from '../components/Loading';
 import CampaignCard from '../components/CampaignCard';
 
 const DonorDashboard = () => {
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
   const [campaigns, setCampaigns] = useState([]);
   const [myDonations, setMyDonations] = useState([]);
   const [topDonors, setTopDonors] = useState([]);
@@ -322,6 +322,7 @@ Issued: ${new Date(receipt.issuedAt).toLocaleString()}
           }}
           onSuccess={() => {
             fetchData();
+            refreshUser(); // Refresh user data in context
             setShowDonateModal(false);
             setSelectedCampaign(null);
           }}
@@ -356,10 +357,11 @@ const DonateModal = ({ campaign, onClose, onSuccess }) => {
         localStorage.setItem('user', JSON.stringify(updatedUser));
       }
       
-      alert('Donation successful! Thank you for your contribution.');
+      // Close modal and refresh data
+      onSuccess();
       
-      // Reload page to refresh all data
-      window.location.reload();
+      // Show success message
+      alert('Donation successful! Thank you for your contribution.');
     } catch (error) {
       alert(error.response?.data?.message || 'Donation failed');
     } finally {
